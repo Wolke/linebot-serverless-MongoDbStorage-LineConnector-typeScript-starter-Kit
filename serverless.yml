@@ -1,0 +1,26 @@
+service: linebot-serverless-MongoDbStorage-LineConnector-typeScript-starter-Kit
+
+provider:
+  name: aws
+  region: ap-northeast-1  
+  runtime: nodejs6.10
+  vpc:
+    securityGroupIds:
+     - "sg-db38a1xx"
+    subnetIds:
+     - "subnet-44e59exx"
+functions:
+  line:
+    handler: handler.line
+    events:
+      - http:
+          method: post
+          path: line
+    vpc:
+      securityGroupIds:
+      - "sg-db38a1xx"
+      subnetIds:
+      - "subnet-44e59exx"
+plugins:
+  - serverless-webpack
+  - serverless-offline
